@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Js_task3</title>
+</head>
+<body>
+    <label for="num1">Enter num1: </label>
+    <input type="text" class="input" id="num1"> <br><br>
+    <label for="num2">Enter num2: </label>
+    <input type="text" class="input" id="num2"> <br><br>
+    <button type="button" onclick="calculate('multiply')">Multiply</button>
+    <button type="button" onclick="calculate('divide')">Divide</button> <br><br>  
+    <label for="output">The result is: </label>
+    <input type="text" class="output" id="result">
+    
+    <script>
+    function calculate(operation) {
+  const num1Element = document.getElementById("num1");
+  const num2Element = document.getElementById("num2");
+  const resultElement = document.getElementById("result");
+
+  if (num1Element && num2Element && resultElement) {
+    const num1 = parseFloat(num1Element.value);
+    const num2 = parseFloat(num2Element.value);
+
+    if (!isNaN(num1) && !isNaN(num2)) {
+      if (operation === "multiply") {
+        const result = num1 * num2;
+        resultElement.value = result;
+      } else if (operation === "divide") {
+        if (num2 === 0) {
+          resultElement.value = "Cannot divide by zero";
+        } else {
+          const result = num1 / num2;
+          resultElement.value = result;
+        }
+      }
+    } else {
+      resultElement.value = "Invalid input";
+    }
+  }
+}
+</script>
+</body>
+</html>

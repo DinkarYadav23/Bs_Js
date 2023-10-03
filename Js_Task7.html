@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js_task7</title>
+    <style>
+      .con {
+        height: 400px;
+        width: 1500px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #imgg {
+        height: 150px;
+        margin-top: 150px;
+        position: absolute;
+        left: 0;
+      }
+
+      #start {
+        background-color: blue;
+        padding: 10px;
+      }
+
+      #stop {
+        background-color: red;
+        padding: 10px;
+        margin-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <img id="imgg" src="https://github.com/DinkarYadav23/Bs_Js/blob/main/Engine.jpeg?raw=true">
+    </div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <script>
+      var train = document.getElementById("imgg");
+      var startbtn = document.getElementById('start');
+      var stopbtn = document.getElementById('stop');
+      var animationId = null; // Variable to store the animation frame ID
+      var currentPosition = 0; // Store the current position
+      function moveImage() {
+        const speed = 2;
+
+        function animate() {
+          currentPosition += speed;
+          train.style.left = currentPosition + 'px';
+          if (currentPosition < 1500) {
+            animationId = requestAnimationFrame(animate);
+          }
+        }
+        animationId = requestAnimationFrame(animate);
+      }
+
+      function startAnimation() {
+        if (!animationId) {
+          moveImage();
+        }
+      }
+
+      function stopAnimation() {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+      }
+      startbtn.addEventListener('click', startAnimation);
+      stopbtn.addEventListener('click', stopAnimation);
+    </script>
+  </body>
+</html>

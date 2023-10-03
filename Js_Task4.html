@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Js_task4</title>
+</head>
+<body>
+    <h1>Date and Time</h1>
+
+    <button onclick="showDate()">Show Date</button>
+    <div id="dateAnswerArea"></div><br>
+
+    <button onclick="showISTTime()">Show IST Time</button>
+    <div id="timeAnswerArea"></div>
+
+    <script>
+        function showDate() {
+            const now = new Date();
+            const dateAnswerArea = document.getElementById("dateAnswerArea");
+            const paragraph = document.createElement("p");
+            paragraph.textContent = now.toLocaleDateString();
+
+            dateAnswerArea.innerHTML = "";
+            dateAnswerArea.appendChild(paragraph);
+        }
+        // Function to display the Indian Standard Time (IST)
+        function showISTTime() {
+            const now = new Date();
+            const timeAnswerArea = document.getElementById("timeAnswerArea");
+            const paragraph = document.createElement("p");
+            const options = {
+                weekday: "short",
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+                timeZoneName: "short",
+                timeZone: "Asia/Kolkata" // Set the specific time zone (India Standard Time)  
+            };
+            paragraph.textContent = now.toLocaleString("en-US", options);
+            timeAnswerArea.innerHTML = "";
+            timeAnswerArea.appendChild(paragraph);
+        }
+    </script>
+</body>
+</html>
